@@ -10,9 +10,12 @@ class MainWindow(QtGui.QWidget):
         QtCore.QTimer.singleShot(100, self.garbageloop)
 
     def initui(self):
-        self.deactivatedicon = QtGui.QPixmap('deactive.png')
-        self.activatedicon = QtGui.QPixmap('active.png')
-        self.woodhouseicon = QtGui.QIcon(QtGui.QPixmap('woodhouse.png'))
+        self.deactivatedicon = QtGui.QPixmap(
+                        '/usr/share/pixmaps/woodhouse/deactive.png')
+        self.activatedicon = QtGui.QPixmap(
+                        '/usr/share/pixmaps/woodhouse/active.png')
+        self.woodhouseicon = QtGui.QIcon(QtGui.QPixmap(
+                        '/usr/share/pixmaps/woodhouse/woodhouse.png'))
         self.setWindowIcon(self.woodhouseicon)
         self.systray = QtGui.QSystemTrayIcon(self.woodhouseicon)
         self.systray.setVisible(True)
