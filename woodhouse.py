@@ -365,21 +365,30 @@ class MainWindow(QtGui.QWidget):
         if rulename == []:
             self.msgbox('No rule selected','Please select a rule to delete.')
         else:
-            delete = woodhouse_functions.testrules( folder)
+            delete = woodhouse_functions.testrules(folder)
             ruledelete = []
             text = "Items that should be deleted: \n"
             for items in delete:
                 if folder in items:
                     ruledelete.append(items)
-            text = text + str(items) + '\n'
-            #Messagebox with extras:
-            msgBox = QtGui.QMessageBox()
-            msgBox.setWindowIcon(self.woodhouseicon)
-            msgBox.setWindowTitle('Items to delete')
-            #tailing spaces since msgBox ignores setGeometry
-            msgBox.setText('There are ' + str(len(ruledelete)) + ' items to be deleted                     ')
-            msgBox.setDetailedText(text)
-            msgBox.exec_()
+            try:
+                text = text + str(items) + '\n'
+                #Messagebox with extras:
+                msgBox = QtGui.QMessageBox()
+                msgBox.setWindowIcon(self.woodhouseicon)
+                msgBox.setWindowTitle('Items to delete')
+                #tailing spaces since msgBox ignores setGeometry
+                msgBox.setText('There are ' + str(len(ruledelete)) + ' items to be deleted                     ')
+                msgBox.setDetailedText(text)
+                msgBox.exec_()
+            except UnboundLocalError:
+                msgBox = QtGui.QMessageBox()
+                msgBox.setWindowIcon(self.woodhouseicon)
+                msgBox.setWindowTitle('No Items to delete')
+                #tailing spaces since msgBox ignores setGeometry
+                msgBox.setText('There are ' + str(len(ruledelete)) + ' items to be deleted                     ')
+                msgBox.exec_()
+                
 
 def main():
 
