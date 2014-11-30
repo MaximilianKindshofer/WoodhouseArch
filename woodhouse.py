@@ -145,6 +145,10 @@ class MainWindow(QtGui.QWidget):
             # it has the form of
             # ['/path/to/blerg'] we slice the first 2 and the
             # last 2
+            #
+            # To past me: thats a weird way to select the first
+            # item of a list
+            
             showfolder = self.folder
             showfolder = str(showfolder)[2:-2]
             duplicates = self.folderlist.findItems(showfolder, QtCore.Qt.MatchExactly)
